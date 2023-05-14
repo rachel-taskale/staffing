@@ -59,7 +59,7 @@ export const StaffTable = (props) => {
   };
 
   return (
-    <Box border='1px solid gray'  borderRadius={20} p={2}>
+    <Box border='1px solid gray'  borderRadius={20} p={2} mr={5}>
       <TableContainer>
         <Table  variant="simple" size="sm" maxWidth="50%" maxHeight="20px" >
           <Thead>
@@ -73,7 +73,7 @@ export const StaffTable = (props) => {
           <Tbody>
             {Array.from(props.data)?.map((person) => (
               <Tr _hover={{
-                  bgColor: "teal.50",
+                  bgColor: "gray.100",
               }}>
                 <Td >
                   {person.first_name} {person.last_name}
@@ -137,7 +137,7 @@ export const ClientTable = (props) => {
           <Tbody>
             {props.data ? Array.from(props.data).map((person) => (
               <Tr _hover={{
-                bgColor: "teal.50",
+                bgColor: "gray.100",
             }}>
                 <Td>
                   {person.name}

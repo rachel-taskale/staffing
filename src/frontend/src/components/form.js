@@ -48,7 +48,7 @@ export const AddForm = (props) => {
 
   return (
     <Box>
-      <Button onClick={onOpen}>Add Staff Member</Button>
+      <Button border='1px solid black' bgColor='white' size='sm' onClick={onOpen}>Add Staff Member</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

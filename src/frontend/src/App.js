@@ -114,26 +114,34 @@ export default function App() {
       </Text>
       <Spacer h={8} />
       <Wrap>
-        <VStack>
-          <StaffTable data={staff} mb="5%" maxWidth="40%" />
+        <Box  h='fit-content' py={5} mr='5%' minWidth="50%" alignContent='left'>
+        <VStack >
+          <StaffTable data={staff} mb="5%"  />
           <AddForm types_of_staff={types_of_staff} newData={newData} />
         </VStack>
+        </Box>
 
         <VStack>
-          <Box maxH="50%" overflowY="auto" w="full">
+          <Box maxH="50%" overflowY="auto" w="full" mb='5%'>
             {events ? (
               Array.from(events).map((item) => (
-                <HStack bgColor="gray.100" m="1.5" py="10px" px='10px' borderRadius={10}>
-                  <Text>{item.name}</Text>
-                  <Text>{item.date}</Text>
-                </HStack>
+                <EventsCard 
+                  name = {item.name}
+                  date = {item.date}
+                />
+                // <HStack bgColor="gray.100" m="1.5" py="10px" px='10px' borderRadius={10}>
+                //   <Text>{item.name}</Text>
+                //   <Text>{item.date}</Text>
+                // </HStack>
               ))
             ) : (
               <></>
             )}
           </Box>
-
-          <ClientTable data={clients} mb="5%"></ClientTable>
+          <Box border='1px solid' borderColor='gray.100' borderRadius={10}>
+          <ClientTable data={clients} ></ClientTable>
+          <Button border='1px solid black' bgColor='white' size='sm'>Add new client</Button>
+          </Box>
         </VStack>
       </Wrap>
     </Box>

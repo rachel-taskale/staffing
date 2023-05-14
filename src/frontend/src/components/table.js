@@ -59,9 +59,8 @@ export const StaffTable = (props) => {
   };
 
   return (
-    <Box border='1px solid gray'  borderRadius={20} p={2} mr={5}>
       <TableContainer>
-        <Table  variant="simple" size="sm" maxWidth="50%" maxHeight="20px" >
+        <Table  variant="simple" size="sm"  >
           <Thead>
             <Tr>
               <Th>Name</Th>
@@ -117,14 +116,12 @@ export const StaffTable = (props) => {
           </Tbody>
         </Table>
       </TableContainer>
-    </Box>
   );
 };
 
 export const ClientTable = (props) => {
   return (
-    <Box border='1px solid gray' borderRadius={20} p={2}>
-      <TableContainer>
+      <TableContainer >
         <Table variant="simple" size="sm" maxWidth="50%">
           <Thead>
             <Tr>
@@ -149,6 +146,6 @@ export const ClientTable = (props) => {
           </Tbody>
         </Table>
       </TableContainer>
-    </Box>
+    
   );
 };

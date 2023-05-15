@@ -67,6 +67,16 @@ app.get("/api/staff/:id", (req,res)=>{
     })
 })
 
+app.post("/api/events", (req, res)=>{
+    let {client_id, name, timestamp} = req.body
+    query.addEvent({client_id, name, timestamp}).then(
+        ()=>{
+            res.status(201).send("Registered Event")}
+        ).catch((err)=>{res.send(err)})
+})
+
+
+
 app.post("/api/staff/role", (req, res)=>{
     let {staff_id, first_name, last_name, type_id} = req.body
     query.assignRole({staff_id, first_name, last_name, type_id}).then(

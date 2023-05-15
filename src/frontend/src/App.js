@@ -114,14 +114,15 @@ export default function App() {
       </Text>
       <Spacer h={8} />
       <Wrap>
-        <Box  h='fit-content' py={5} mr='5%' minWidth="50%" alignContent='left'>
-        <VStack >
-          <StaffTable data={staff} mb="5%"  />
-          <AddForm types_of_staff={types_of_staff} newData={newData} />
-        </VStack>
-        </Box>
+   
 
         <VStack>
+        <Text  fontWeight='bold' fontSize='lg'>Client List</Text>
+        <Box border='1px solid' borderColor='gray.100' borderRadius={10}>
+          <ClientTable data={clients} ></ClientTable>
+          <Button border='1px solid black' bgColor='white' size='sm'>Add new client</Button>
+          </Box>
+        <Text fontWeight='bold' fontSize='lg'>Events</Text>
           <Box maxH="50%" overflowY="auto" w="full" mb='5%'>
             {events ? (
               Array.from(events).map((item) => (
@@ -138,11 +139,17 @@ export default function App() {
               <></>
             )}
           </Box>
-          <Box border='1px solid' borderColor='gray.100' borderRadius={10}>
-          <ClientTable data={clients} ></ClientTable>
-          <Button border='1px solid black' bgColor='white' size='sm'>Add new client</Button>
-          </Box>
+       
+
+          
         </VStack>
+        <Box  h='fit-content' py={5} mr='5%' minWidth="50%" alignContent='left'>
+        <VStack >
+          <Text fontWeight='bold' fontSize='lg'>Staff List</Text>
+          <StaffTable data={staff} mb="5%"  />
+          <AddForm types_of_staff={types_of_staff} newData={newData} />
+        </VStack>
+        </Box>
       </Wrap>
     </Box>
   );

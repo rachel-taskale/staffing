@@ -81,6 +81,24 @@ const addStaff = ({ staff_id, first_name, last_name, email, phone }) => {
     });
   };
 
+
+  const addEvent = ({ client_id, name, timestamp }) => {
+    console.log('here')
+    return new Promise((resolve, reject) => {
+      client.query(
+        `INSERT INTO events(client_id, date, name) VALUES($1, $2, $3)`,
+        [client_id, timestamp, name],
+        (err, result) => {
+          if (!err) {
+            return resolve()
+          } else {
+            return reject(err)
+          }
+        }
+      );
+    });
+  };
+
 // add client
 const addClient = ({ client_id, name, email, phone }) => {
     return new Promise((resolve, reject)=>{
@@ -193,5 +211,6 @@ module.exports = {
   deleteStaff,
   assignRole,
   removeRole,
-  getEvents
+  getEvents,
+  addEvent
 };

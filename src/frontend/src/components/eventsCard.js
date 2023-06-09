@@ -33,7 +33,7 @@ export const EventsCard = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <HStack bgColor="gray.100" m="1.5" py="10px" px="10px" borderRadius={10}>
+    <HStack bgColor="white" m="1.5" py="10px" px="10px" border='1px solid #1D2127' borderRadius={10}>
       <Text>{props.name}</Text>
       <Text>{props.date}</Text>
       <Spacer />

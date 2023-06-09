@@ -4,7 +4,7 @@ import "./App.css";
 import { CButton } from "./components/button";
 import { Title } from "./components/title";
 import { ClientTable, StaffTable } from "./components/table";
-import { AddForm } from "./components/form";
+import { AddStaffForm, AddClientForm } from "./components/form";
 import { useRef } from "react";
 import {
   Box,
@@ -106,51 +106,89 @@ export default function App() {
   };
 
   // todo: add and remove roles from a person
-
+  //   background-color: #eff1f3;
   return (
-    <Box className="App" mx="2.5%" p="2.5rem">
-      <Text fontSize="3xl" fontWeight="bold">
-        Staffing Dashboard
-      </Text>
-      <Spacer h={8} />
-      <Wrap>
-   
+    <Box className="App" fontSize="md" fontWeight="medium">
+      <Box mx="2.5rem">
+        <Text fontSize="3xl" fontWeight="bold" pt='30px'>
+          Staffing
+        </Text>
+        <Spacer h={8} />
 
-        <VStack>
-        <Text  fontWeight='bold' fontSize='lg'>Client List</Text>
-        <Box border='1px solid' borderColor='gray.100' borderRadius={10}>
-          <ClientTable data={clients} ></ClientTable>
-          <Button border='1px solid black' bgColor='white' size='sm'>Add new client</Button>
-          </Box>
-        <Text fontWeight='bold' fontSize='lg'>Events</Text>
-          <Box maxH="50%" overflowY="auto" w="full" mb='5%'>
-            {events ? (
-              Array.from(events).map((item) => (
-                <EventsCard 
-                  name = {item.name}
-                  date = {item.date}
-                />
-                // <HStack bgColor="gray.100" m="1.5" py="10px" px='10px' borderRadius={10}>
-                //   <Text>{item.name}</Text>
-                //   <Text>{item.date}</Text>
-                // </HStack>
-              ))
-            ) : (
-              <></>
-            )}
-          </Box>
-       
+        <HStack>
+          <VStack
+            bgColor="white"
+            borderRadius="20px"
+            py="1rem" 
+            px='2rem'
+            mb='20px' 
+            mr='20px'
+            h='350px'
+          >
+            <Box alignItems="left">
+              <HStack>
+                <Text fontWeight="bold" fontSize="md" display="flex">
+                  Clients
+                </Text>
+                <Box
+                  border="1px solid #1D2127"
+                  w="300px"
+                  h="30px"
+                  borderRadius="5px"
+                ></Box>
+                <Button bgColor="#1D2127" color='white' fontSize='12px' py='.5rem' height='fit-content'>Search</Button>
+              </HStack>
+              <Box overflowY="scroll" mt='1rem'>
+              <ClientTable width='full' data={clients}></ClientTable>
+              </Box>
+            </Box>
+            <Box alignItems="right" width='full' >
+              <AddClientForm  display='flex' border='1px solid black'/>
+            </Box>
+          </VStack>
 
-          
+
+
+
+          <VStack bgColor="white" borderRadius="20px"  py="1rem" px='2rem' mb='20px' maxH='350px' width='full' alignItems='left'>
+            <Text fontWeight="bold" fontSize="md" display='flex'>
+              Events
+            </Text>
+            <Box overflowY="scroll">
+              {events ? (
+                Array.from(events).map((item) => (
+                  <EventsCard name={item.name} date={item.date} />
+                ))
+              ) : (
+                <></>
+              )}
+            </Box>
+            <Box alignItems="right" width='full' >
+              <AddClientForm  display='flex' border='1px solid black'/>
+            </Box>
+          </VStack>
+        </HStack>
+
+        <VStack
+          h="fit-content"
+          // py={5}
+          py="1rem" px='2rem'
+          minWidth="50%"
+          maxHeight="400px"
+          bgColor="white"
+          borderRadius="20px"
+          alignItems='left'
+          display='flex'
+        >
+          <Text fontWeight="bold" fontSize="md">
+            Staff List
+          </Text>
+          <Box overflowY="scroll">
+          <StaffTable  data={staff} width="full" />
+          </Box>
+          <AddStaffForm types_of_staff={types_of_staff} newData={newData} />
         </VStack>
-        <Box  h='fit-content' py={5} mr='5%' minWidth="50%" alignContent='left'>
-        <VStack >
-          <Text fontWeight='bold' fontSize='lg'>Staff List</Text>
-          <StaffTable data={staff} mb="5%"  />
-          <AddForm types_of_staff={types_of_staff} newData={newData} />
-        </VStack>
-        </Box>
-      </Wrap>
+      </Box>
     </Box>
   );
 }

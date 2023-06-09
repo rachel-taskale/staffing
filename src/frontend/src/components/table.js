@@ -21,6 +21,9 @@ import {
   ModalFooter,
   ModalCloseButton,
   ModalBody,
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -68,10 +71,11 @@ export const StaffTable = (props) => {
   };
 
   return (
-    <TableContainer>
-      <Table variant="simple" size="sm">
+    <TableContainer alignItems="left" display="flex">
+      <Table variant="simple" width="full" size='sm'>
         <Thead>
           <Tr>
+            <Th></Th>
             <Th>Name</Th>
             <Th>Email</Th>
             <Th>Phone</Th>
@@ -101,7 +105,9 @@ export const StaffTable = (props) => {
                   </ModalFooter>
                 </ModalContent>
               </Modal>
-
+              <Td>
+                <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+              </Td>
               <Td>
                 {person.first_name} {person.last_name}
               </Td>
@@ -150,13 +156,13 @@ export const StaffTable = (props) => {
 export const ClientTable = (props) => {
   return (
     <TableContainer>
-      <Table variant="simple" size="sm" maxWidth="50%">
+      <Table variant="ghost" size="sm" fontSize="xs">
         <Thead>
           <Tr>
+            <Th></Th>
             <Th>Name</Th>
             <Th>Email</Th>
-            <Th>Phone</Th>
-            <Th>Events</Th>
+            <Th>Phone</Th>``
           </Tr>
         </Thead>
         <Tbody>
@@ -167,6 +173,12 @@ export const ClientTable = (props) => {
                   bgColor: "gray.100",
                 }}
               >
+                <Td>
+                  <Avatar
+                    name="Dan Abrahmov"
+                    src="https://bit.ly/dan-abramov"
+                  />
+                </Td>
                 <Td>{person.name}</Td>
                 <Td>{person.email}</Td>
                 <Td>{person.phone}</Td>

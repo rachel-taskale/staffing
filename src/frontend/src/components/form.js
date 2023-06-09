@@ -29,7 +29,7 @@ import {
   ModalHeader,
 } from "@chakra-ui/react";
 
-export const AddForm = (props) => {
+export const AddStaffForm = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,7 +48,14 @@ export const AddForm = (props) => {
 
   return (
     <Box>
-      <Button border='1px solid black' bgColor='white' size='sm' onClick={onOpen}>Add Staff Member</Button>
+      <Button
+        border="1px solid #1D2127"
+        bgColor="white"
+        size="sm"
+        onClick={onOpen}
+      >
+        Add Staff
+      </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -129,6 +136,56 @@ export const AddForm = (props) => {
           </Box>
           <ModalCloseButton />
         </ModalContent>
+      </Modal>
+    </Box>
+  );
+};
+
+export const AddClientForm = () => {
+ 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [roles, setRoles] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <Box>
+      <Button border='1px solid' bgColor='white' onClick={onOpen} fontSize='sm'>Add Client</Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Staff</ModalHeader>
+          <ModalCloseButton />
+
+          <Box>
+            <Box mx={10}>
+            <Input
+                variant="flushed"
+                mt="10px"
+                placeholder="Name"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              ></Input>
+
+            </Box>
+          </Box>
+          <ModalFooter>
+              <Button variant="ghost" mt={5} mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button
+                colorScheme="blue"
+                mt={5}
+                mr={3}
+                
+              >
+                Submit
+              </Button>
+            </ModalFooter>
+        </ModalContent>
+        
       </Modal>
     </Box>
   );
